@@ -1,0 +1,29 @@
+.navegador {
+  display: block;
+  text-decoration: none;
+  color: #FFF;
+  font-weight: 300;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.navegador:hover {
+  background: linear-gradient(135deg, #07A7E3 0%, #32DAC3 100%);
+}
+
+
+@media(max-width: 768px) {
+  .navegador {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      align-self: center;
+      height: 100%;
+  }
+
+  .navegador a {
+      display: inline;
+      padding: 10px;
+      margin: 0;
+  }
+}
