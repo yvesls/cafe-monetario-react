@@ -1,5 +1,5 @@
 :root {
-  --bg-dark: #1A2F3A;
+  --bg-dark: #0447ff;
   --logo-height: 100px;
   --header-height: 100px;
   --aside-width: 225px;
@@ -37,10 +37,12 @@ header.header {
 
 aside.menu-area {
   grid-area: menu;
+  background-color: var(--bg-dark);
+  box-shadow: 2px 0 10px 0 rgba(0,0,0,0.12), 2px 0 15px 0 rgba(0,0,0,0.09);
 }
 
 main.content {
-  grid-area: content;
+  grid-area: content; 
 }
 
 footer.footer {
@@ -49,17 +51,43 @@ footer.footer {
 
 @media(max-width: 768px) {
   .app {
-      grid-template-rows: var(--header-height) var(--menu-top-height) 1fr var(--footer-height);
-      grid-template-columns: var(--aside-width) 1fr;
-      grid-template-areas: "logo header" "menu menu" "content content" "footer footer";
+    grid-template-rows: var(--header-height) var(--menu-top-height) 1fr var(--footer-height);
+    grid-template-columns: var(--aside-width) 1fr;
+    grid-template-areas: 
+      "logo header"
+      "menu menu"
+      "content content"
+      "footer footer"
+    ;
+  }
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    height: 100%;
+  }
+
+  .menu a {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    padding: 10px;
+    margin: 0;
   }
 }
 
 @media(max-width: 576px) {
   .app {
-      grid-template-rows: var(--logo-height) var(--menu-top-height) 1fr var(--footer-height);
-      grid-template-columns: 1fr;
-      grid-template-areas: "logo" "menu" "content" "footer";
+    grid-template-rows: var(--logo-height) var(--menu-top-height) 1fr var(--footer-height);
+    grid-template-columns: 1fr;
+    grid-template-areas: "logo" "menu" "content" "footer";
+  }
+
+  .header {
+    display: none;
   }
 }
 
@@ -91,17 +119,6 @@ footer.footer {
   align-items: center;
 }
 
-.logo img {
-  padding: 0 15px;
-  width: 100%;
-}
-
-@media(max-width: 576px) {
-  .logo img {
-      width: 250px;
-  }
-}
-
 .mainContainer > div {
   background-color: #FFF;
   box-shadow: 0 0 15px #0004;
@@ -109,15 +126,6 @@ footer.footer {
 }
 
 .menu-area {
-  background-color: var(--bg-dark);
-  box-shadow: 2px 0 10px 0 rgba(0,0,0,0.12), 2px 0 15px 0 rgba(0,0,0,0.09);
-}
-
-
-
-
-
-aside.menu-area {
   background-color: var(--bg-dark);
   box-shadow: 2px 0 10px 0 rgba(0,0,0,0.12), 2px 0 15px 0 rgba(0,0,0,0.09);
 }
@@ -131,21 +139,5 @@ aside.menu-area {
 }
 
 .menu a:hover {
-  background: linear-gradient(135deg, #07A7E3 0%, #32DAC3 100%);
-}
-
-@media(max-width: 768px) {
-  .menu {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      align-self: center;
-      height: 100%;
-  }
-
-  .menu a {
-      display: inline;
-      padding: 10px;
-      margin: 0;
-  }
+  background: linear-gradient(135deg, #0535b9 0%, #0344f7 100%);
 }

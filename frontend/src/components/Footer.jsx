@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <span>
-        Desenvolvido com <i className='fa fa-heart text-danger'></i> por <strong>Yves</strong>
+        Desenvolvido por <strong>João</strong> e <strong>Yves</strong>
       </span>
     </footer>
   );

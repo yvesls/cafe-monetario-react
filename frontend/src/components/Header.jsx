@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header({ icone, title, subtitle }) {
   return (
-    <header className="header">
+    <header className="header pt-3">
       <h1>
         <i className={`fa ${icone}`} />
         {title}
