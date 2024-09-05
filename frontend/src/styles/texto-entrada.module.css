@@ -1,0 +1,31 @@
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.heade {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #ccc 3px solid;
+    text-align: center;
+}
+.heade h1 {
+    margin: 0;
+    font-size: 2em;
+}
+.mainContent {
+    padding: 20px;
+    background: #fff;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+.subTitulo {
+    color: #333;
+}
+.section {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,45 @@
+table {
+    width: 100%; 
+    border-radius: 1rem; 
+    overflow: hidden; 
+    border-collapse: collapse; 
+    margin-top: 1rem;
+  }
+  
+  thead {
+    background: linear-gradient(to right, #846b5f, #866f63); 
+    color: #F7FAFC; 
+  }
+  
+  thead th {
+    padding: 1rem; 
+    text-align: center; 
+    font-weight: bold; 
+  }
+  
+  
+  tbody td {
+    padding: 1rem; 
+    text-align: center;
+    border-bottom: 1px solid #E2E8F0; 
+  }
+  
+  
+  tbody tr:hover {
+    background-color: #e0c8bc; 
+  }
+  
+  tbody td i {
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    table {
+      font-size: 0.9rem; 
+    }
+    
+    thead th, tbody td {
+      padding: 0.75rem; 
+    }
+  }
+  

@@ -27,10 +27,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/users": [
+    "/cadastro": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/users.js"
+      "static/chunks/pages/cadastro.js"
     ]
   },
   "ampFirstPages": []

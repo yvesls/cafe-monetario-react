@@ -1,9 +1,10 @@
-import '../styles/global.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import Nav from '../components/Nav';
-import Logo from '../components/Logo';
-import Footer from '../components/Footer';
+import Logo from '../components/layout/Logo';
+import Nav from '../components/layout/Nav';
+import "../styles/forms.css";
+import '../styles/global.css';
+import "../styles/tabela.css";
 
 export default function MyApp({ Component, pageProps }) {
   return (
@@ -11,7 +12,6 @@ export default function MyApp({ Component, pageProps }) {
       <Logo />
       <Nav />
       <Component {...pageProps} />
-      <Footer />
     </div>
   );
 }

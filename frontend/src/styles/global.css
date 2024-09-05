@@ -24,7 +24,7 @@
                        "menu content"
                        "menu footer";
   height: 100vh;
-  background-color: #F5F5F5;
+  background-color: #f3efe6;
 }
 
 aside.logo {
@@ -37,7 +37,7 @@ header.header {
 
 aside.menu-area {
   grid-area: menu;
-  background-color: var(--bg-dark);
+  background-color: #7c5a49;
 }
 
 main.content {
@@ -95,16 +95,24 @@ footer.footer {
   align-items: center;
   justify-content: flex-end;
   padding: 0 25px;
-  background-color: #FFF;
+  background-color: #f3efe6;
   box-shadow: var(--shadow);
 }
 
 .header {
+  display: flex;
+  gap: 1rem;
+
   background-color: #FFF;
-  padding: 0 15px;
+  padding: 0 1rem;
   overflow: hidden;
+
   white-space: nowrap;
   box-shadow: var(--shadow);
+}
+
+.header i{
+  font-size: 3rem;
 }
 
 .header h1 {
@@ -112,7 +120,7 @@ footer.footer {
 }
 
 .logo {
-  background-color: var(--bg-dark);
+  background-color: #7c5a49;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,10 +130,11 @@ footer.footer {
   background-color: #FFF;
   box-shadow: 0 0 15px #0004;
   border-radius: 5px;
+  margin:1rem;
 }
 
 .menu-area {
-  background-color: var(--bg-dark);
+  background-color: #7c5a49;
 }
 
 .menu a {
@@ -137,5 +146,6 @@ footer.footer {
 }
 
 .menu a:hover {
-  background: linear-gradient(135deg, #0535b9 0%, #0344f7 100%);
+  background: linear-gradient(135deg, #e0c8bc 0%, #e0c8bc 100%);
+  color: #7c5a49;
 }
