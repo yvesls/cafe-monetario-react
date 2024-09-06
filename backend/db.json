@@ -1,1 +1,61 @@
-{}
+{
+    "produtores": [
+        {
+        "id": 1,
+        "nomeFazenda": "Fazenda Santa Clara"
+        },
+        {
+        "id": 2,
+        "nomeFazenda": "Fazenda Boa Vista"
+        },
+        {
+        "id": 3,
+        "nomeFazenda": "Fazenda Monte Verde"
+        },
+        {
+        "id": 4,
+        "nomeFazenda": "Fazenda Verde Campo"
+        },
+        {
+        "id": 5,
+        "nomeFazenda": "Fazenda Café do Sul"
+        }
+    ],
+    "cargasCafe": [
+        {
+        "id": 1,
+        "produtorId": 1,
+        "quantidadeSacas": 100,
+        "precoUnitario": 150.0,
+        "disponivel": true
+        },
+        {
+        "id": 2,
+        "produtorId": 2,
+        "quantidadeSacas": 200,
+        "precoUnitario": 140.0,
+        "disponivel": true
+        },
+        {
+        "id": 3,
+        "produtorId": 3,
+        "quantidadeSacas": 150,
+        "precoUnitario": 160.0,
+        "disponivel": false
+        },
+        {
+        "id": 4,
+        "produtorId": 4,
+        "quantidadeSacas": 250,
+        "precoUnitario": 155.0,
+        "disponivel": true
+        },
+        {
+        "id": 5,
+        "produtorId": 5,
+        "quantidadeSacas": 300,
+        "precoUnitario": 145.0,
+        "disponivel": false
+        }
+    ]
+}

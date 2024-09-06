@@ -1,44 +1,22 @@
 import { useEffect, useState } from 'react';
+import ColecaoProdutor from '../core/colecao/ColecaoProdutor'; // Verifique o caminho
 
 export default function Tabela() {
     const [sacas, setSacas] = useState([]);
 
-    useEffect(() => {
-        const fetchProducers = () => {
-            setSacas([
-                {
-                  "codigo": "1",
-                  "nomeProdutor": "Fazenda Santa Clara",
-                  "quantidadeSacas": 100,
-                  "precoUnitario": 150.0,
-                },
-                {
-                  "codigo": "2",
-                  "nomeProdutor": "Fazenda Boa Vista",
-                  "quantidadeSacas": 200,
-                  "precoUnitario": 140.0,
-                },
-                {
-                  "codigo": "3",
-                  "nomeProdutor": "Fazenda Monte Verde",
-                  "quantidadeSacas": 150,
-                  "precoUnitario": 160.0,
-                },
-                {
-                  "codigo": "4",
-                  "nomeProdutor": "Fazenda Verde Campo",
-                  "quantidadeSacas": 250,
-                  "precoUnitario": 155.0,
-                },
-                {
-                  "codigo": "5",
-                  "nomeProdutor": "Fazenda Café do Sul",
-                  "quantidadeSacas": 300,
-                  "precoUnitario": 145.0,
-                }
-              ]);
-        }
+    console.log('Componente renderizado');
 
+    useEffect(() => {
+        console.log('Componente montado');
+        const fetchProducers = async () => {
+            console.log('Chamando fetchProducers...');
+            const colecaoProdutor = new ColecaoProdutor();
+            const result = await colecaoProdutor.findCargasComProdutores();
+            console.log('Dados recebidos:', result);
+            setSacas(result);
+        };
+
+        console.log('Entrou no useEffect');
         fetchProducers();
     }, []);
 
@@ -47,35 +25,40 @@ export default function Tabela() {
             <tr>
                 <th>Código</th>
                 <th>Nome da Fazenda</th>
-                <th>Quantidade de saca</th>
-                <th>Preco Unitário</th>
+                <th>Quantidade de Sacas</th>
+                <th>Preço Unitário</th>
                 <th>Ação</th>
             </tr>
         );
     }
 
     function renderizarDados() {
-        return sacas?.map((saca) => (
+        return sacas.map(saca => (
             <tr key={saca.codigo}>
-                <td >{saca.codigo}</td>
-                <td >{saca.nomeProdutor}</td>
-                <td >{saca.quantidadeSacas}</td>
-                <td >{saca.precoUnitario}</td>
+                <td>{saca.codigo}</td>
+                <td>{saca.nomeProdutor}</td>
+                <td>{saca.quantidadeSacas}</td>
+                <td>{saca.precoUnitario.toFixed(2)}</td>
                 <td>
-                    <i className='fa fa-money' onClick={() => mostra(saca.codigo)}>
-                    </i>
+                    <button
+                        onClick={() => mostra(saca.codigo)}
+                        style={{ cursor: 'pointer', background: 'none', border: 'none', padding: '0', fontSize: '1.5em' }}
+                        aria-label={`Ver detalhes da carga ${saca.codigo}`}
+                    >
+                        <i className="fa fa-money" />
+                    </button>
                 </td>
             </tr>
         ));
     }
 
     function mostra(codigo) {
-        console.log(codigo)
+        console.log("Código selecionado:", codigo);
     }
 
     return (
         <table className="w-full rounded-xl overflow-hidden">
-            <thead className="bg-gradient-to-r from-purple-500 to-purple-800 text-black">
+            <thead className="bg-gradient-to-r from-purple-500 to-purple-800 text-white">
                 {renderizarCabecalho()}
             </thead>
             <tbody>
