@@ -7,7 +7,7 @@ export default function Cadastro() {
         <div>
             {/* <ProdutorForm></ProdutorForm> */}
             {/* <CaragaSacaForm></CaragaSacaForm> */}
-            <Tabela></Tabela>
+            <Tabela/>
         </div>
         </Main>
     );
