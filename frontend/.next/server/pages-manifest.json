@@ -2,5 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/cadastro": "pages/cadastro.js"
+  "/cadastro": "pages/cadastro.js",
+  "/": "pages/index.js",
+  "/cadastro-comprador": "pages/cadastro-comprador.js",
+  "/listaSacas": "pages/listaSacas.js",
+  "/compra": "pages/compra.js"
 }
