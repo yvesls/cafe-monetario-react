@@ -3,5 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/cadastro": "pages/cadastro.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/cadastro-comprador": "pages/cadastro-comprador.js",
+  "/listaSacas": "pages/listaSacas.js",
+  "/compra": "pages/compra.js"
 }

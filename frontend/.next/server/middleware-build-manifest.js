@@ -28,6 +28,21 @@ self.__BUILD_MANIFEST = {
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/cadastro.js"
+    ],
+    "/cadastro-comprador": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/cadastro-comprador.js"
+    ],
+    "/compra": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/compra.js"
+    ],
+    "/listaSacas": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/listaSacas.js"
     ]
   },
   "ampFirstPages": []
