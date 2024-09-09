@@ -1,48 +1,17 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import ColecaoProdutor from '../../core/colecao/ColecaoProdutor'
 
 export default function Tabela() {
     const [sacas, setSacas] = useState([]);
     const router = useRouter();
 
-    
-
     useEffect(() => {
-        const fetchProducers = () => {
-            setSacas([
-                {
-                  "codigo": "1",
-                  "nomeProdutor": "Fazenda Santa Clara",
-                  "quantidadeSacas": 100,
-                  "precoUnitario": 150.0,
-                },
-                {
-                  "codigo": "2",
-                  "nomeProdutor": "Fazenda Boa Vista",
-                  "quantidadeSacas": 200,
-                  "precoUnitario": 140.0,
-                },
-                {
-                  "codigo": "3",
-                  "nomeProdutor": "Fazenda Monte Verde",
-                  "quantidadeSacas": 150,
-                  "precoUnitario": 160.0,
-                },
-                {
-                  "codigo": "4",
-                  "nomeProdutor": "Fazenda Verde Campo",
-                  "quantidadeSacas": 250,
-                  "precoUnitario": 155.0,
-                },
-                {
-                  "codigo": "5",
-                  "nomeProdutor": "Fazenda Café do Sul",
-                  "quantidadeSacas": 300,
-                  "precoUnitario": 145.0,
-                }
-              ]);
-        }
-
+      const fetchProducers = async () => {
+          const colecaoProdutor = new ColecaoProdutor();
+          const result = await colecaoProdutor.findCargasComProdutores();
+          setSacas(result);
+      };
         fetchProducers();
     }, []);
 

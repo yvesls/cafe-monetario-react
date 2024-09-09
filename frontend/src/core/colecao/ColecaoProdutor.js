@@ -78,15 +78,12 @@ export default class ColecaoProdutor extends ProdutorRepository {
     }
 
 
-    // Método para buscar a relação de cargas com produtores
     async findCargasComProdutores() {
         const colecaoCargaCafe = new ColecaoCargaCafe();
 
-        // Busca todos os produtores e todas as cargas de café
         const produtores = await this.obterTodos();
         const cargasCafe = await colecaoCargaCafe.obterTodos();
 
-        // Mapeia os dados conforme a relação desejada
         const result = cargasCafe.map(carga => {
             const produtor = produtores.find(p => p.id === carga.produtorId);
             return {

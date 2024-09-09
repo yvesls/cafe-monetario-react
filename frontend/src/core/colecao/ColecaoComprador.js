@@ -1,11 +1,12 @@
-export default class ColecaoComprador {
+import CompradorRepository from "../repository/CompradorRepository";
+export default class ColecaoComprador extends CompradorRepository {
     constructor() {
+        super()
         this.baseUrl = 'http://localhost:3001/comprador';
     }
 
     async salvar(comprador) {
         if (comprador?.id) {
-            // Atualizar comprador existente
             const response = await fetch(`${this.baseUrl}/${comprador.id}`, {
                 method: 'PUT',
                 headers: {
@@ -20,7 +21,6 @@ export default class ColecaoComprador {
 
             return await response.json();
         } else {
-            // Criar novo comprador
             const response = await fetch(this.baseUrl, {
                 method: 'POST',
                 headers: {

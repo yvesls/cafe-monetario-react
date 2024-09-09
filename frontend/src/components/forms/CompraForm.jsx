@@ -1,34 +1,50 @@
 import { useEffect, useState } from "react";
+import ColecaoComprador from "../../core/colecao/ColecaoComprador";
+import ColecaoCompra from "../../core/colecao/ColecaoCompra";
 
 export default function CompraForm({ nomeFazenda }) {
   const [compradores, setCompradores] = useState([]);
   const [selectedCompradorId, setSelectedCompradorId] = useState("");
   const [qtdSaca, setQtdSaca] = useState("");
-
+  const [valorSaca, setValorSaca] = useState("");
+  const [cargaId, setCargaId] = useState("");
+  
   useEffect(() => {
-    const fetchCompradores = () => {
-      setCompradores([
-        {
-          id: "1",
-          name: "Marcos Antonio",
-        },
-        {
-          id: "2",
-          name: "Tadeu Morais",
-        },
-        {
-          id: "3",
-          name: "Ferando da Silva",
-        },
-      ]);
+    const fetchCompradores = async () => {
+      const colecaoComprador = new ColecaoComprador();
+      const result = await colecaoComprador.obterTodos();
+      setCompradores(result);
     };
 
     fetchCompradores();
-  }, []); //
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(selectedCompradorId);
+
+    const quantidadeComprada = Number(qtdSaca);
+    const valorTotal = quantidadeComprada * Number(valorSaca);
+
+    const compra = {
+      compradorId: selectedCompradorId,
+      cargaId: cargaId || "1",
+      quantidadeComprada,
+      valorTotal,
+      estorando: false,
+    };
+
+    try {
+      const colecaoCompra = new ColecaoCompra();
+      const compraSalva = await colecaoCompra.salvar(compra);
+      console.log("Compra salva com sucesso:", compraSalva);
+
+      setQtdSaca("");
+      setValorSaca("");
+      setSelectedCompradorId("");
+      setCargaId("");
+    } catch (error) {
+      console.error("Erro ao salvar a compra:", error);
+    }
   };
 
   return (
@@ -49,26 +65,36 @@ export default function CompraForm({ nomeFazenda }) {
         />
       </div>
       <div>
-        <label htmlFor="producer">Comprador: </label>
+        <label htmlFor="valorSaca">Valor por saca:</label>
+        <input
+          type="number"
+          id="valorSaca"
+          value={valorSaca}
+          placeholder="Informe o valor por saca"
+          onChange={(e) => setValorSaca(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="comprador">Comprador: </label>
         <select
           id="comprador"
           value={selectedCompradorId}
           onChange={(e) => setSelectedCompradorId(e.target.value)}
           required
-          placeholder="Selecione o produtor"
         >
           <option value="" disabled>
             Selecione um comprador
           </option>
           {compradores.map((comprador) => (
             <option key={comprador.id} value={comprador.id}>
-              {comprador.name}
+              {comprador.nome}
             </option>
           ))}
         </select>
       </div>
       <div className="div-button">
-        <button>Comprar</button>
+        <button type="submit">Comprar</button>
       </div>
     </form>
   );

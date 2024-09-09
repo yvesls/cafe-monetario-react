@@ -1,17 +1,36 @@
 import { useState } from 'react';
 import { formatarCNPJ, removerMascaraCNPJ } from '../../utils/maskUtils';
+import ColecaoComprador from '../../core/colecao/ColecaoComprador'; // Repositório para salvar comprador
 
 export default function CompradorForm() {
     const [nome, setNome] = useState('');
     const [cnpj, setCNPJ] = useState('');
     const [valorInvestimentoTotal, setValorInvestimentoTotal] = useState('');
+    
+    const compradorRepo = new ColecaoComprador();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         const cnpjSemMascara = removerMascaraCNPJ(cnpj);
-        console.log('Nome:', nome);
-        console.log('CNPJ:', cnpjSemMascara);
-        console.log('Valor Investimento Total:', valorInvestimentoTotal);
+
+        const comprador = {
+            nome,
+            cnpj: cnpjSemMascara,
+            valorInvestimentoTotal: Number(valorInvestimentoTotal),
+        };
+
+        try {
+            await compradorRepo.salvar(comprador);
+
+            setNome('');
+            setCNPJ('');
+            setValorInvestimentoTotal('');
+
+            console.log('Comprador salvo com sucesso!');
+        } catch (error) {
+            console.error('Erro ao salvar comprador:', error);
+        }
     };
 
     return (
