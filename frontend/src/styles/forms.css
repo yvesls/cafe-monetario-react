@@ -24,6 +24,11 @@ form div input{
 
 }
 
+form div input:disabled{
+    background-color: #C7CBDC;
+}
+
+
 form div input:focus{
         background-color: #e3e4e4;
         box-shadow: none !important;

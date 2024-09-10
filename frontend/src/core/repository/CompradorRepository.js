@@ -1,4 +1,4 @@
-export default class ClienteRepository {
+export default class CompradorRepository {
     salvar(cliente) {
         throw new Error("Método não implementado");
     }

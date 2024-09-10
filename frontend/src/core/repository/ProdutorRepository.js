@@ -14,4 +14,8 @@ export default class ProdutorRepository {
     obterPorId(id) {
         throw new Error("Método não implementado");
     }
+
+    findCargasComProdutores() {
+        throw new Error("Método não implementado");
+    }
 }
