@@ -25,6 +25,12 @@
       "quantidade": 1990,
       "preco": 145,
       "id": 6
+    },
+    {
+      "nomeFazenda": "Fazenda Mario",
+      "quantidade": 120,
+      "preco": 120,
+      "id": 7
     }
   ],
   "cargasCafe": [
@@ -70,6 +76,12 @@
       "cnpj": "2312312124124",
       "valorInvestimentoTotal": 34345,
       "id": 1
+    },
+    {
+      "nome": "Marcos Antonio",
+      "cnpj": "12831208312803",
+      "valorInvestimentoTotal": 10000,
+      "id": 2
     }
   ],
   "compra": [

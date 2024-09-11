@@ -9,8 +9,8 @@ export default function Nav() {
       <nav className="menu">
         <Navegador destino="/" texto="Início" icone="fa fa-home" />
         <Navegador destino="/cadastro" texto="Castro de produtor" icone="fa fa-address-card" />
-        <Navegador destino="/cadastro-comprador" texto="Cadastro de comprador" icone="fa fa-shopping-bag" />
-        <Navegador destino="/listaSacas" texto="Lista de saca" icone="fa fa-coffee  " />
+        <Navegador destino="/listComprador" texto="Lista de compradores" icone="fa fa-shopping-bag" />
+        <Navegador destino="/listSacas" texto="Lista de sacas" icone="fa fa-coffee  " />
       </nav>
     </aside>
   );
