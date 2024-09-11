@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import ColecaoProdutor from '../../core/colecao/ColecaoProdutor'
+import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
 
-export default function Tabela() {
+export default function SacaList() {
     const [sacas, setSacas] = useState([]);
     const router = useRouter();
 
@@ -55,9 +55,9 @@ export default function Tabela() {
       
 
 
-    return (
-        <table className="w-full rounded-xl overflow-hidden">
-            <thead className="bg-gradient-to-r from-purple-500 to-purple-800 text-black">
+    return (  
+        <table>
+            <thead>
                 {renderizarCabecalho()}
             </thead>
             <tbody>
