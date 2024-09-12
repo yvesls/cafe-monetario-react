@@ -65,40 +65,35 @@
     {
       "id": 5,
       "produtorId": 5,
-      "quantidadeSacas": 300,
-      "precoUnitario": 145
-    },
-    {
-      "id": 6,
-      "produtorId": 6,
-      "quantidadeSacas": 1990,
-      "precoUnitario": 145
-    },
-    {
-      "produtorId": 7,
-      "quantidadeSacas": 290,
-      "precoUnitario": 100,
-      "id": 7
-    },
-    {
-      "produtorId": 8,
-      "quantidadeSacas": 1000,
-      "precoUnitario": 100,
-      "id": 8
-    },
-    {
-      "produtorId": 9,
-      "quantidadeSacas": 200,
-      "precoUnitario": 98,
-      "id": 9
+      "quantidadeSacas": 0,
+      "precoUnitario": 145,
+      "disponivel": false
     }
   ],
   "comprador": [
     {
-      "nome": "Maria - inserido pelo salvar",
-      "cnpj": "2312312124124",
-      "valorInvestimentoTotal": 34345,
-      "id": 1
+      "id": 1,
+      "nome": "João da Silva",
+      "cnpj": "12.345.678/0001-90",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
+    },
+    {
+      "id": 2,
+      "nome": "Maria Pereira",
+      "cnpj": "98.765.432/0001-10",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
+    },
+    {
+      "id": 3,
+      "nome": "Empresa Café Bom",
+      "cnpj": "11.222.333/0001-44",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
     }
   ],
   "compra": [
