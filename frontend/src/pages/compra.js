@@ -2,17 +2,15 @@ import CompraForm from "../components/forms/CompraForm";
 import Main from "../components/Main";
 
 export async function getServerSideProps(context) {
-    const { nomeProdutor, precoUnitario, codigo } = context.query;
+    const { codigoProdutor } = context.query;
     return {
       props: { 
-        nomeProdutor: nomeProdutor || "",
-        precoUnitario: precoUnitario || 0,
-        codigo: codigo || "",
+        codigoProdutor: codigoProdutor
       },
     };
   }
 
-export default function Compra({ nomeProdutor, precoUnitario, codigo }) {
+export default function Compra({ codigoProdutor }) {
     
   return (
     <Main
@@ -20,7 +18,7 @@ export default function Compra({ nomeProdutor, precoUnitario, codigo }) {
       title="Compras de saca de café"
       subtitle="Compre aqui sua saca de café! Selecione o comprador e a quantidade desejada para concluir sua compra."
     >
-      <CompraForm nomeProdutor={nomeProdutor} precoUnitario={precoUnitario} codigo={codigo} />
+      <CompraForm codigoProdutor={codigoProdutor} />
     </Main>
   );
 }

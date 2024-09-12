@@ -80,14 +80,6 @@
       "valorDisponivelInvestimento": 15000
     },
     {
-      "id": 2,
-      "nome": "Maria Pereira",
-      "cnpj": "98.765.432/0001-10",
-      "valorInvestimentoTotal": 15000,
-      "valorTotalInvestido": 0,
-      "valorDisponivelInvestimento": 15000
-    },
-    {
       "id": 3,
       "nome": "Empresa Café Bom",
       "cnpj": "11.222.333/0001-44",
