@@ -37,12 +37,12 @@ export default class ColecaoComprador extends CompradorRepository {
         }
     }
 
-    async excluir(comprador) {
-        if (!comprador?.id) {
+    async excluir(compradorId) {
+        if (!compradorId) {
             throw new Error("comprador inválido, ID é necessário para exclusão.");
         }
 
-        const response = await fetch(`${this.baseUrl}/${comprador.id}`, {
+        const response = await fetch(`${this.baseUrl}/${compradorId}`, {
             method: 'DELETE',
         });
 
