@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { formatarCNPJ, removerMascaraCNPJ } from '../../utils/maskUtils';
-import ColecaoComprador from '../../core/colecao/ColecaoComprador'; // Repositório para salvar comprador
+import ColecaoComprador from '../../core/colecao/ColecaoComprador';
 
 export default function CompradorForm() {
     const [nome, setNome] = useState('');
