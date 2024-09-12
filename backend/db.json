@@ -22,9 +22,19 @@
     },
     {
       "nomeFazenda": "Nova Esperança - Cadastrado via Salvar",
-      "quantidade": 1990,
-      "preco": 145,
       "id": 6
+    },
+    {
+      "nomeFazenda": "Fazenda Vila Velha",
+      "id": 7
+    },
+    {
+      "nomeFazenda": "Fazenda Arco-íris",
+      "id": 8
+    },
+    {
+      "nomeFazenda": "Fazenda Vila Nova",
+      "id": 9
     }
   ],
   "cargasCafe": [
@@ -32,36 +42,55 @@
       "id": 1,
       "produtorId": 1,
       "quantidadeSacas": 100,
-      "precoUnitario": 150,
-      "disponivel": true
+      "precoUnitario": 150
     },
     {
       "id": 2,
       "produtorId": 2,
       "quantidadeSacas": 200,
-      "precoUnitario": 140,
-      "disponivel": true
+      "precoUnitario": 140
     },
     {
       "id": 3,
       "produtorId": 3,
       "quantidadeSacas": 150,
-      "precoUnitario": 160,
-      "disponivel": false
+      "precoUnitario": 160
     },
     {
       "id": 4,
       "produtorId": 4,
       "quantidadeSacas": 250,
-      "precoUnitario": 155,
-      "disponivel": true
+      "precoUnitario": 155
     },
     {
       "id": 5,
       "produtorId": 5,
       "quantidadeSacas": 300,
-      "precoUnitario": 145,
-      "disponivel": false
+      "precoUnitario": 145
+    },
+    {
+      "id": 6,
+      "produtorId": 6,
+      "quantidadeSacas": 1990,
+      "precoUnitario": 145
+    },
+    {
+      "produtorId": 7,
+      "quantidadeSacas": 290,
+      "precoUnitario": 100,
+      "id": 7
+    },
+    {
+      "produtorId": 8,
+      "quantidadeSacas": 1000,
+      "precoUnitario": 100,
+      "id": 8
+    },
+    {
+      "produtorId": 9,
+      "quantidadeSacas": 200,
+      "precoUnitario": 98,
+      "id": 9
     }
   ],
   "comprador": [
@@ -75,7 +104,7 @@
   "compra": [
     {
       "compradorId": "1",
-      "cargaId": "1",
+      "cargaId": 1,
       "quantidadeComprada": 2,
       "valorTotal": 64,
       "estorando": false,
