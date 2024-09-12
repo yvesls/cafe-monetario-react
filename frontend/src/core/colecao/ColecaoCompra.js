@@ -9,10 +9,11 @@ export default class ColecaoCompra extends CompraRepository {
     }
 
     async salvar(compra) {
-        const { compradorId, cargaId, quantidadeComprada } = compra;
+        debugger
+        const { compradorId, produtorId, quantidadeComprada } = compra;
 
         const colecaoCarga = new ColecaoCargaCafe();
-        const carga = await colecaoCarga.obterPorId(cargaId);
+        const carga = await colecaoCarga.obterPorId(produtorId);
         
         if (!carga) {
             throw new Error("Carga de café não encontrada.");

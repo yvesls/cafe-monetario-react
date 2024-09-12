@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
+import ColecaoCargaCafe from '../../core/colecao/ColecaoCargaCafe';
 
 export default function ProdutorForm() {
     const [nomeFazenda, setNomeFazenda] = useState('');
@@ -7,22 +8,30 @@ export default function ProdutorForm() {
     const [preco, setPreco] = useState('');
     
     const produtorRepo = new ColecaoProdutor();
+    const cargaCafeRepo = new ColecaoCargaCafe();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const produtor = {
             nomeFazenda,
-            quantidade: Number(quantidade),
-            preco: Number(preco),
         };
 
         try {
-            await produtorRepo.salvar(produtor);
+            const produtorId = (await produtorRepo.salvar(produtor)).id;
+
+            const cargaCafe = {
+                produtorId,
+                quantidadeSacas: Number(quantidade),
+                precoUnitario: Number(preco),
+            }
+            console.log(cargaCafe)
+            await cargaCafeRepo.salvar(cargaCafe);
 
             setNomeFazenda('');
             setQuantidade('');
             setPreco('');
+
             console.log('Produtor salvo com sucesso!');
         } catch (error) {
             console.error('Erro ao salvar produtor:', error);

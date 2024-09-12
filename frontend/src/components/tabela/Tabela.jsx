@@ -35,14 +35,14 @@ export default function Tabela() {
             <td>{saca.quantidadeSacas}</td>
             <td>{formatarParaDinheiro(saca.precoUnitario)}</td>
             <td>
-              <i className="fa fa-money" onClick={() => mostra(saca.nomeProdutor)}></i>
+              <i className="fa fa-money" onClick={() => mostra(saca.nomeProdutor, saca.precoUnitario, saca.codigo)}></i>
             </td>
           </tr>
         ));
       }
 
-    function mostra(nomeFazenda) {
-        router.push(`/compra?nomeFazenda=${nomeFazenda}`);
+    function mostra(nomeProdutor, precoUnitario, codigo) {
+      router.push(`/compra?codigo=${codigo}&nomeProdutor=${nomeProdutor}&precoUnitario=${precoUnitario}`);
     }
 
 
