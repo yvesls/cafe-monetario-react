@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import ColecaoComprador from "../../core/colecao/ColecaoComprador";
 import ColecaoCompra from "../../core/colecao/ColecaoCompra";
+import ColecaoComprador from "../../core/colecao/ColecaoComprador";
 
 export default function CompraForm({ nomeFazenda }) {
   const [compradores, setCompradores] = useState([]);
@@ -30,7 +30,6 @@ export default function CompraForm({ nomeFazenda }) {
       cargaId: cargaId || "1",
       quantidadeComprada,
       valorTotal,
-      estorando: false,
     };
 
     try {

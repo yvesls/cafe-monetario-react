@@ -1,14 +1,18 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ColecaoCompra from "../../core/colecao/ColecaoCompra.js";
 import ColecaoComprador from "../../core/colecao/ColecaoComprador";
 import ColecaoProdutor from "../../core/colecao/ColecaoProdutor";
 import TransferenciaService from "../../core/service/transferenciaService.js";
 
+
 export default function TransferenciaForm({
   produtorId,
   compradorId,
   compraId,
 }) {
+  const router = useRouter();
+
   const [nomeFazenda, setNomeFazenda] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [nomeComprador, setNomeComprador] = useState("");
@@ -55,6 +59,8 @@ export default function TransferenciaForm({
       try {
         await transferenciaService.salvarCompra(transferencia,compraId);
         /* console.log("Produtor salvo com sucesso!"); */ //Jogar no modal
+        router.push(`/listCompra`);
+
       } catch (error) {
         console.error("Erro ao salvar produtor:", error);
       }

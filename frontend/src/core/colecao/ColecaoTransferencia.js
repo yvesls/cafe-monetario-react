@@ -17,7 +17,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao atualizar a carga de café.");
+                throw new Error("Erro ao atualizar a transferencia.");
             }
 
             return await response.json();
@@ -31,7 +31,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao criar a carga de café.");
+                throw new Error("Erro ao criar a transferencia.");
             }
 
             return await response.json();
@@ -58,7 +58,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter a carga de café.");
+            throw new Error("Erro ao obter a transferencia.");
         }
 
         return await response.json();

@@ -63,7 +63,7 @@ export default class ColecaoCompra extends CompraRepository {
         await colecaoComprador.salvar(comprador);
 
         return await response.json();
-    }
+    }   
 
     async excluir(compra) {
         if (!compra?.id) {
@@ -102,5 +102,25 @@ export default class ColecaoCompra extends CompraRepository {
 
         return await response.json();
     }
+
+
+    async update(compra){
+        if (compra?.id) {
+            const response = await fetch(`${this.baseUrl}/${compra.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(compra),
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao atualizar a compra.");
+            }
+
+            return await response.json();
+        } 
+    }
+
 
 }

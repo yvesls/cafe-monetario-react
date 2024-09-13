@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import compraService from '../../core/service/compraService';
 
-export default function HistoricoCompraList(){
+export default function CompraList(){
     const router = useRouter();
     const [compras, setCompras] = useState([]);
 
