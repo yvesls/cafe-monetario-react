@@ -53,21 +53,20 @@
     {
       "id": 3,
       "produtorId": 3,
-      "quantidadeSacas": 150,
+      "quantidadeSacas": 0,
       "precoUnitario": 160
     },
     {
       "id": 4,
       "produtorId": 4,
-      "quantidadeSacas": 250,
+      "quantidadeSacas": 247,
       "precoUnitario": 155
     },
     {
       "id": 5,
       "produtorId": 5,
       "quantidadeSacas": 0,
-      "precoUnitario": 145,
-      "disponivel": false
+      "precoUnitario": 145
     }
   ],
   "comprador": [
@@ -76,26 +75,83 @@
       "nome": "João da Silva",
       "cnpj": "12.345.678/0001-90",
       "valorInvestimentoTotal": 15000,
-      "valorTotalInvestido": 0,
-      "valorDisponivelInvestimento": 15000
+      "valorDisponivelInvestimento": 120,
+      "valorTotalInvestido": 14880
     },
     {
       "id": 3,
       "nome": "Empresa Café Bom",
       "cnpj": "11.222.333/0001-44",
       "valorInvestimentoTotal": 15000,
-      "valorTotalInvestido": 0,
-      "valorDisponivelInvestimento": 15000
+      "valorTotalInvestido": 14880,
+      "valorDisponivelInvestimento": 120
+    },
+    {
+      "nome": "Café 3 Corações",
+      "cnpj": "21324324523423",
+      "valorInvestimentoTotal": 5000,
+      "valorTotalInvestido": 4960,
+      "valorDisponivelInvestimento": 40,
+      "id": 4
+    },
+    {
+      "nome": "Café Bom é Forte",
+      "cnpj": "23452343242342",
+      "valorInvestimentoTotal": 90000,
+      "valorTotalInvestido": 4625,
+      "valorDisponivelInvestimento": 85375,
+      "id": 5
     }
   ],
   "compra": [
     {
-      "compradorId": "1",
-      "cargaId": 1,
-      "quantidadeComprada": 2,
-      "valorTotal": 64,
-      "estorando": false,
-      "id": 1
+      "compradorId": 1,
+      "produtorId": 3,
+      "quantidadeComprada": 93,
+      "valorTotal": 14880,
+      "id": 2
+    },
+    {
+      "compradorId": 3,
+      "produtorId": 3,
+      "quantidadeComprada": 93,
+      "valorTotal": 14880,
+      "id": 3
+    },
+    {
+      "compradorId": 4,
+      "produtorId": 3,
+      "quantidadeComprada": 31,
+      "valorTotal": 4960,
+      "id": 4
+    },
+    {
+      "compradorId": 5,
+      "produtorId": 3,
+      "quantidadeComprada": 26,
+      "valorTotal": 4160,
+      "id": 5
+    },
+    {
+      "compradorId": 5,
+      "produtorId": 4,
+      "quantidadeComprada": 1,
+      "valorTotal": 155,
+      "id": 6
+    },
+    {
+      "compradorId": 5,
+      "produtorId": 4,
+      "quantidadeComprada": 1,
+      "valorTotal": 155,
+      "id": 7
+    },
+    {
+      "compradorId": 5,
+      "produtorId": 4,
+      "quantidadeComprada": 1,
+      "valorTotal": 155,
+      "id": 8
     }
   ]
 }

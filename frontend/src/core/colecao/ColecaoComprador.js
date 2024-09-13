@@ -51,6 +51,18 @@ export default class ColecaoComprador extends CompradorRepository {
         }
     }
 
+    async obterPorId(id) {
+        const response = await fetch(`${this.baseUrl}/${id}`, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao obter o produtor.");
+        }
+
+        return await response.json();
+    }
+
     async obterTodos() {
         const response = await fetch(this.baseUrl, {
             method: 'GET',

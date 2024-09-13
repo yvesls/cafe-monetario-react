@@ -9,7 +9,6 @@ export default class ColecaoCompra extends CompraRepository {
     }
 
     async salvar(compra) {
-        debugger
         const { compradorId, produtorId, quantidadeComprada } = compra;
 
         const colecaoCarga = new ColecaoCargaCafe();
@@ -28,25 +27,18 @@ export default class ColecaoCompra extends CompraRepository {
 
         const valorTotalCompra = quantidadeComprada * carga.precoUnitario;
 
-        if (comprador.valorInvestimentoTotal < valorTotalCompra) {
+        if (comprador.valorDisponivelInvestimento < valorTotalCompra) {
             throw new Error("Saldo insuficiente para realizar a compra.");
         }
 
-        if (quantidadeComprada > carga.quantidadeDisponivel) {
+        if (quantidadeComprada > carga.quantidadeSacas) {
             throw new Error("Quantidade de sacas insuficiente na carga.");
         }
 
-        carga.quantidadeDisponivel -= quantidadeComprada;
+        carga.quantidadeSacas -= quantidadeComprada;
         
-        if (carga.quantidadeDisponivel === 0) {
-            carga.disponivel = false;
-        }
-
-        comprador.valorInvestimentoTotal -= valorTotalCompra;
-
-        comprador.totalInvestido = comprador.totalInvestido
-            ? comprador.totalInvestido + valorTotalCompra
-            : valorTotalCompra;
+        comprador.valorDisponivelInvestimento -= valorTotalCompra;
+        comprador.valorTotalInvestido += valorTotalCompra;
 
         const response = await fetch(this.baseUrl, {
             method: 'POST',

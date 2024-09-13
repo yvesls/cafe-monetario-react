@@ -5,6 +5,9 @@ export default class CompradorRepository {
     excluir(cliente) {
         throw new Error("Método não implementado");
     }
+    obterPorId() {
+        throw new Error("Método não implementado");
+    }
     obterTodos() {
         throw new Error("Método não implementado");
     }

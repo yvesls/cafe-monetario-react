@@ -15,6 +15,10 @@ export default class ProdutorRepository {
         throw new Error("Método não implementado");
     }
 
+    obterProdutorESacaPorId() {
+        throw new Error("Método não implementado");
+    }
+
     findCargasComProdutores() {
         throw new Error("Método não implementado");
     }
