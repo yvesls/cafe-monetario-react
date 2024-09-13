@@ -22,20 +22,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cadastro-comprador": [
+    "/cadastro": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cadastro-comprador.js"
+      "static/chunks/pages/cadastro.js"
     ],
     "/compra": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/compra.js"
     ],
-    "/listaSacas": [
+    "/listComprador": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/listaSacas.js"
+      "static/chunks/pages/listComprador.js"
+    ],
+    "/listSacas": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/listSacas.js"
     ]
   },
   "ampFirstPages": []

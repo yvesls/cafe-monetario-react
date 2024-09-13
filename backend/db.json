@@ -19,18 +19,6 @@
     {
       "id": 5,
       "nomeFazenda": "Fazenda Café do Sul"
-    },
-    {
-      "nomeFazenda": "Nova Esperança - Cadastrado via Salvar",
-      "quantidade": 1990,
-      "preco": 145,
-      "id": 6
-    },
-    {
-      "nomeFazenda": "Fazenda Mario",
-      "quantidade": 120,
-      "preco": 120,
-      "id": 7
     }
   ],
   "cargasCafe": [
@@ -65,23 +53,35 @@
     {
       "id": 5,
       "produtorId": 5,
-      "quantidadeSacas": 300,
+      "quantidadeSacas": 0,
       "precoUnitario": 145,
       "disponivel": false
     }
   ],
   "comprador": [
     {
-      "nome": "Maria - inserido pelo salvar",
-      "cnpj": "2312312124124",
-      "valorInvestimentoTotal": 34345,
-      "id": 1
+      "id": 1,
+      "nome": "João da Silva",
+      "cnpj": "12.345.678/0001-90",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
     },
     {
-      "nome": "Marcos Antonio",
-      "cnpj": "12831208312803",
-      "valorInvestimentoTotal": 10000,
-      "id": 2
+      "id": 2,
+      "nome": "Maria Pereira",
+      "cnpj": "98.765.432/0001-10",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
+    },
+    {
+      "id": 3,
+      "nome": "Empresa Café Bom",
+      "cnpj": "11.222.333/0001-44",
+      "valorInvestimentoTotal": 15000,
+      "valorTotalInvestido": 0,
+      "valorDisponivelInvestimento": 15000
     }
   ],
   "compra": [
