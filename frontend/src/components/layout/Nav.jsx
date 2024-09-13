@@ -11,6 +11,7 @@ export default function Nav() {
         <Navegador destino="/cadastro" texto="Castro de produtor" icone="fa fa-address-card" />
         <Navegador destino="/listComprador" texto="Lista de compradores" icone="fa fa-shopping-bag" />
         <Navegador destino="/listSacas" texto="Lista de sacas" icone="fa fa-coffee  " />
+        <Navegador destino="/historicoCompra" texto="Historico de compras" icone="fa fa-history " />
       </nav>
     </aside>
   );

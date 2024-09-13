@@ -1,5 +1,5 @@
 import CompraRepository from "../repository/CompraRepositoy";
-import ColecaoCargaCafe from "./ColecaoCargaCafe"; 
+import ColecaoCargaCafe from "./ColecaoCargaCafe";
 import ColecaoComprador from "./ColecaoComprador";
 
 export default class ColecaoCompra extends CompraRepository {
@@ -90,4 +90,17 @@ export default class ColecaoCompra extends CompraRepository {
 
         return await response.json();
     }
+
+    async obterPorId(id) {
+        const response = await fetch(`${this.baseUrl}/${id}`, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao obter o produtor.");
+        }
+
+        return await response.json();
+    }
+
 }
