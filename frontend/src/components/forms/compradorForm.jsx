@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { formatarCNPJ, removerMascaraCNPJ } from '../../utils/maskUtils';
 import ColecaoComprador from '../../core/colecao/ColecaoComprador';
+import { useModal } from '../../core/service/ModalService.js';
 
 export default function CompradorForm() {
     const [nome, setNome] = useState('');
     const [cnpj, setCNPJ] = useState('');
     const [valorInvestimentoTotal, setValorInvestimentoTotal] = useState('');
+    const { showModal } = useModal();
     
     const compradorRepo = new ColecaoComprador();
 
@@ -19,7 +21,6 @@ export default function CompradorForm() {
             cnpj: cnpjSemMascara,
             valorInvestimentoTotal: Number(valorInvestimentoTotal),
             valorTotalInvestido: 0,
-            valorDisponivelInvestimento: Number(valorInvestimentoTotal),
         };
 
         try {
@@ -29,9 +30,9 @@ export default function CompradorForm() {
             setCNPJ('');
             setValorInvestimentoTotal('');
 
-            console.log('Comprador salvo com sucesso!');
+            showModal("Sucesso!", `Produtor salvo com sucesso!`, "success");
         } catch (error) {
-            console.error('Erro ao salvar comprador:', error);
+            showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
         }
     };
 

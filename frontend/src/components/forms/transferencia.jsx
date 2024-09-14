@@ -4,7 +4,7 @@ import ColecaoCompra from "../../core/colecao/ColecaoCompra.js";
 import ColecaoComprador from "../../core/colecao/ColecaoComprador";
 import ColecaoProdutor from "../../core/colecao/ColecaoProdutor";
 import TransferenciaService from "../../core/service/transferenciaService.js";
-
+import { useModal } from '../../core/service/ModalService.js';
 
 export default function TransferenciaForm({
   produtorId,
@@ -12,33 +12,49 @@ export default function TransferenciaForm({
   compraId,
 }) {
   const router = useRouter();
-
+  const { showModal } = useModal();
   const [nomeFazenda, setNomeFazenda] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [nomeComprador, setNomeComprador] = useState("");
 
-  const [compra, setCompra] = useState(null); // Para saber qual o valor unitario por quantindade daquela compra
+  const [compra, setCompra] = useState(null);
 
   const transferenciaService = new TransferenciaService();
 
   useEffect(() => {
     const fetchProducers = async () => {
       const colecaoProdutor = new ColecaoProdutor();
-      const result = await colecaoProdutor.obterPorId(produtorId);
-      setNomeFazenda(result.nomeFazenda);
+      try {
+
+        const result = await colecaoProdutor.obterPorId(produtorId);
+        setNomeFazenda(result.nomeFazenda);
+      }
+      catch(error) {
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+      }
     };
 
     const fetchCompra = async () => {
       const colecaoCompra = new ColecaoCompra();
-      const result = await colecaoCompra.obterPorId(compraId);
-      setCompra(result);
-      setQuantidade(result.quantidade);
+      try {
+        const result = await colecaoCompra.obterPorId(compraId);
+        setCompra(result);
+        setQuantidade(result.quantidade);
+      }
+      catch(error) {
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+      }
     };
 
     const fetchComprador = async () => {
       const colecaoComprador = new ColecaoComprador();
-      const result = await colecaoComprador.obterPorId(compradorId);
-      setNomeComprador(result.nome);
+      try {
+        const result = await colecaoComprador.obterPorId(compradorId);
+        setNomeComprador(result.nome);
+      }
+      catch(error) {
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+      }
     };
 
     fetchProducers();
@@ -58,14 +74,12 @@ export default function TransferenciaForm({
       };
       try {
         await transferenciaService.salvarCompra(transferencia,compraId);
-        /* console.log("Produtor salvo com sucesso!"); */ //Jogar no modal
         router.push(`/listCompra`);
-
       } catch (error) {
-        console.error("Erro ao salvar produtor:", error);
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
       }
     } else {
-      console.log("Não pode comprar");
+      showModal( "Atenção!", `Não pode transferir!`, "info");
     }
   };
 

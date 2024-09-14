@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-
+import { useModal } from '../../core/service/ModalService.js';
 import TransferenciaService from "../../core/service/transferenciaService";
 
 export default function HistoricoTransferencia(){
     const [transferencias, setTransferencias] = useState([]);
+    const { showModal } = useModal();
 
     useEffect(() => {
         const fetchProducers = async () => {
             const service = new TransferenciaService()
+            
+          try{
             const result = await service.getAllTransferecia();
             setTransferencias(result);
+          }
+          catch(error) {
+            showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+          }
         };
           fetchProducers();
       }, []);

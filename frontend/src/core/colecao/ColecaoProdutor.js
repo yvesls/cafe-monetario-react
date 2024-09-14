@@ -1,5 +1,6 @@
 import ProdutorRepository from "../repository/ProdutorRepository";
 import ColecaoCargaCafe from "./ColecaoCargaCafe"; 
+import ErrorException from "../Exception/ErrorException.jsx";
 
 export default class ColecaoProdutor extends ProdutorRepository {
     constructor() {
@@ -18,7 +19,7 @@ export default class ColecaoProdutor extends ProdutorRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao atualizar o produtor.");
+                throw new ErrorException("error", "Erro ao atualizar o produtor.");
             }
 
             return await response.json();
@@ -32,24 +33,24 @@ export default class ColecaoProdutor extends ProdutorRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao criar o produtor.");
+                throw new ErrorException("error", "Erro ao criar o produtor.");
             }
 
             return await response.json();
         }
     }
 
-    async excluir(produtor) {
-        if (!produtor?.id) {
-            throw new Error("Produtor inválido, ID é necessário para exclusão.");
+    async excluir(produtorId) {
+        if (!produtorId) {
+            throw new ErrorException("error", "Produtor inválido, ID é necessário para exclusão.");
         }
 
-        const response = await fetch(`${this.baseUrl}/${produtor.id}`, {
+        const response = await fetch(`${this.baseUrl}/${produtorId}`, {
             method: 'DELETE',
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao excluir o produtor.");
+            throw new ErrorException("error", "Erro ao excluir o produtor.");
         }
     }
 
@@ -59,7 +60,7 @@ export default class ColecaoProdutor extends ProdutorRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter os produtores.");
+            throw new ErrorException("error", "Erro ao obter os produtores.");
         }
 
         return await response.json();
@@ -71,7 +72,7 @@ export default class ColecaoProdutor extends ProdutorRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter o produtor.");
+            throw new ErrorException("error", "Erro ao obter o produtor.");
         }
 
         return await response.json();
@@ -81,7 +82,7 @@ export default class ColecaoProdutor extends ProdutorRepository {
         const produtor = await this.obterPorId(idProdutor);
         
         if (!produtor) {
-            throw new Error("Produtor não encontrado.");
+            throw new ErrorException("error", "Produtor não encontrado.");
         }
 
         const colecaoCargaCafe = new ColecaoCargaCafe();
@@ -97,7 +98,6 @@ export default class ColecaoProdutor extends ProdutorRepository {
            
         };
     }
-
 
     async findCargasComProdutores() {
         const colecaoCargaCafe = new ColecaoCargaCafe();

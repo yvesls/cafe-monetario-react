@@ -1,4 +1,5 @@
 import TransferenciaRepository from '../repository/Transferencia';
+import ErrorException from "../Exception/ErrorException.jsx";
 
 export default class ColecaoTransferencia extends TransferenciaRepository {
     constructor() {
@@ -17,7 +18,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao atualizar a transferencia.");
+                throw new ErrorException("error", "Erro ao atualizar a transferencia.");
             }
 
             return await response.json();
@@ -31,14 +32,12 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao criar a transferencia.");
+                throw new ErrorException("error", "Erro ao criar a transferencia.");
             }
 
             return await response.json();
         }
     }
-
-
 
     async obterTodos() {
         const response = await fetch(this.baseUrl, {
@@ -46,7 +45,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter as cargas de café.");
+            throw new ErrorException("error", "Erro ao obter as cargas de café.");
         }
 
         return await response.json();
@@ -58,7 +57,7 @@ export default class ColecaoTransferencia extends TransferenciaRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter a transferencia.");
+            throw new ErrorException("error", "Erro ao obter a transferencia.");
         }
 
         return await response.json();
