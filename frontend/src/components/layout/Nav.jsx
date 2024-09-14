@@ -8,9 +8,11 @@ export default function Nav() {
     <aside className="menu-area">
       <nav className="menu">
         <Navegador destino="/" texto="Início" icone="fa fa-home" />
-        <Navegador destino="/compradorCadastro" texto="Castro de Produtor" icone="fa fa-address-card" />
-        <Navegador destino="/listComprador" texto="Cadastro de Comprador" icone="fa fa-shopping-bag" />
-        <Navegador destino="/listSacas" texto="Lista de Sacas" icone="fa fa-coffee  " />
+        <Navegador destino="/cadastro" texto="Castro de produtor" icone="fa fa-address-card" />
+        <Navegador destino="/listComprador" texto="Lista de compradores" icone="fa fa-list-alt" />
+        <Navegador destino="/listSacas" texto="Lista de sacas" icone="fa fa-coffee  " />
+        <Navegador destino="/listCompra" texto="Lista de compras" icone="fa fa-shopping-bag" />
+        <Navegador destino="/historicoTransferencia" texto="Histórico transferência" icone="fa fa-history" />
       </nav>
     </aside>
   );

@@ -1,5 +1,5 @@
 import CompraRepository from "../repository/CompraRepositoy";
-import ColecaoCargaCafe from "./ColecaoCargaCafe"; 
+import ColecaoCargaCafe from "./ColecaoCargaCafe";
 import ColecaoComprador from "./ColecaoComprador";
 
 export default class ColecaoCompra extends CompraRepository {
@@ -56,7 +56,7 @@ export default class ColecaoCompra extends CompraRepository {
         await colecaoComprador.salvar(comprador);
 
         return await response.json();
-    }
+    }   
 
     async excluir(compra) {
         if (!compra?.id) {
@@ -83,4 +83,37 @@ export default class ColecaoCompra extends CompraRepository {
 
         return await response.json();
     }
+
+    async obterPorId(id) {
+        const response = await fetch(`${this.baseUrl}/${id}`, {
+            method: 'GET',
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao obter o produtor.");
+        }
+
+        return await response.json();
+    }
+
+
+    async update(compra){
+        if (compra?.id) {
+            const response = await fetch(`${this.baseUrl}/${compra.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(compra),
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao atualizar a compra.");
+            }
+
+            return await response.json();
+        } 
+    }
+
+
 }
