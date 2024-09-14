@@ -1,4 +1,6 @@
 import CompradorRepository from "../repository/CompradorRepository";
+import ErrorException from "../Exception/ErrorException.jsx";
+
 export default class ColecaoComprador extends CompradorRepository {
     constructor() {
         super()
@@ -30,7 +32,7 @@ export default class ColecaoComprador extends CompradorRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao criar o comprador.");
+                throw new ErrorException("error", "Erro ao criar o comprador.");
             }
 
             return await response.json();
@@ -39,7 +41,7 @@ export default class ColecaoComprador extends CompradorRepository {
 
     async excluir(compradorId) {
         if (!compradorId) {
-            throw new Error("comprador inválido, ID é necessário para exclusão.");
+            throw new ErrorException("error", "comprador inválido, ID é necessário para exclusão.");
         }
 
         const response = await fetch(`${this.baseUrl}/${compradorId}`, {
@@ -47,7 +49,7 @@ export default class ColecaoComprador extends CompradorRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao excluir o comprador.");
+            throw new ErrorException("error", "Erro ao excluir o comprador.");
         }
     }
 
@@ -57,7 +59,7 @@ export default class ColecaoComprador extends CompradorRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter o produtor.");
+            throw new ErrorException("error", "Erro ao obter o produtor.");
         }
 
         return await response.json();
@@ -69,22 +71,9 @@ export default class ColecaoComprador extends CompradorRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter a lista de compradores.");
+            throw new ErrorException("error", "Erro ao obter a lista de compradores.");
         }
 
         return await response.json();
     }
-
-    async obterPorId(id) {
-        const response = await fetch(`${this.baseUrl}/${id}`, {
-            method: 'GET',
-        });
-
-        if (!response.ok) {
-            throw new Error("Erro ao obter o produtor.");
-        }
-
-        return await response.json();
-    }
-
 }

@@ -1,20 +1,32 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ColecaoComprador from "../../core/colecao/ColecaoComprador";
+import { useModal } from '../../core/service/ModalService.js';
 
 export default function CompradorList() {
   const router = useRouter();
   const [compradores, setCompradores] = useState([]);
+  const { showModal } = useModal();
 
   useEffect(() => {
     const fetchCompradores = async () => {
       const colecaoComprador = new ColecaoComprador();
-      const result = await colecaoComprador.obterTodos();
-      setCompradores(result);
+      try {
+        const result = await colecaoComprador.obterTodos();
+        setCompradores(result);
+      }
+      catch(error) {
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+      }
     };
 
     fetchCompradores();
   }, []);
+
+  const valorDisponivelInvestimento = (comprador) => {
+    return (comprador.valorInvestimentoTotal - comprador.valorTotalInvestido)
+  }
+
 
   const renderizarCompradores = () => {
     return compradores?.map((comprador) => (
@@ -23,7 +35,7 @@ export default function CompradorList() {
         <td>{comprador.cnpj}</td>
         <td>R$ {comprador.valorInvestimentoTotal?.toFixed(2)}</td>
         <td>R$ {comprador.valorTotalInvestido?.toFixed(2)}</td>
-        <td>R$ {comprador.valorDisponivelInvestimento?.toFixed(2)}</td>
+        <td>R$ {valorDisponivelInvestimento(comprador).toFixed(2)}</td>
         <td>
           <i className="fa fa-trash" style={{ cursor: 'pointer', color: 'red' }} 
              onClick={() => excluirComprador(comprador.id)}></i>

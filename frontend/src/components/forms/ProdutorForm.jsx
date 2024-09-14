@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
 import ColecaoCargaCafe from '../../core/colecao/ColecaoCargaCafe';
+import { useModal } from '../../core/service/ModalService.js';
 
 export default function ProdutorForm() {
     const [nomeFazenda, setNomeFazenda] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [preco, setPreco] = useState('');
-    
+  const { showModal } = useModal();
+  
     const produtorRepo = new ColecaoProdutor();
     const cargaCafeRepo = new ColecaoCargaCafe();
 
@@ -25,16 +27,15 @@ export default function ProdutorForm() {
                 quantidadeSacas: Number(quantidade),
                 precoUnitario: Number(preco),
             }
-            console.log(cargaCafe)
+            
             await cargaCafeRepo.salvar(cargaCafe);
 
             setNomeFazenda('');
             setQuantidade('');
             setPreco('');
-
-            console.log('Produtor salvo com sucesso!');
+            showModal("Sucesso!", `Produtor salvo com sucesso!`, "success");
         } catch (error) {
-            console.error('Erro ao salvar produtor:', error);
+            showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
         }
     };
 

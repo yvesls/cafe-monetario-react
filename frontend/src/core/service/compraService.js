@@ -24,7 +24,7 @@ export default class CompraService {
 
   async ProdutoreSaca() {
     const resultado = [];
-
+    
     const produtores = await this._getProdutor();
     const sacas = await this._getCargas();
     const compras = await this._getCompras();
@@ -46,7 +46,7 @@ export default class CompraService {
       });
     });
     
-    return await resultado
+    return resultado
   }
 
 }

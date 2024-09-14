@@ -1,16 +1,24 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
+import { useModal } from '../../core/service/ModalService.js';
 
 export default function SacaList() {
   const [sacas, setSacas] = useState([]);
   const router = useRouter();
+  const { showModal } = useModal();
 
   useEffect(() => {
     const fetchProducers = async () => {
       const colecaoProdutor = new ColecaoProdutor();
-      const result = await colecaoProdutor.findCargasComProdutores();
-      setSacas(result);
+      
+      try{
+        const result = await colecaoProdutor.findCargasComProdutores();
+        setSacas(result);
+      }
+      catch(error) {
+        showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+      }
     };
     fetchProducers();
   }, []);

@@ -1,6 +1,7 @@
 import CompraRepository from "../repository/CompraRepositoy";
 import ColecaoCargaCafe from "./ColecaoCargaCafe";
 import ColecaoComprador from "./ColecaoComprador";
+import ErrorException from "../Exception/ErrorException.jsx";
 
 export default class ColecaoCompra extends CompraRepository {
     constructor() {
@@ -9,35 +10,43 @@ export default class ColecaoCompra extends CompraRepository {
     }
 
     async salvar(compra) {
-        const { compradorId, produtorId, quantidadeComprada } = compra;
+        const { compradorId, cargaId, quantidadeComprada } = compra;
+        const erros = [];
 
         const colecaoCarga = new ColecaoCargaCafe();
-        const carga = await colecaoCarga.obterPorId(produtorId);
+        const carga = await colecaoCarga.obterPorId(cargaId);
         
         if (!carga) {
-            throw new Error("Carga de café não encontrada.");
+            throw new ErrorException("error", "Carga de café não encontrada.");
         }
 
         const colecaoComprador = new ColecaoComprador();
         const comprador = await colecaoComprador.obterPorId(compradorId);
 
         if (!comprador) {
-            throw new Error("Comprador não encontrado.");
+            throw new ErrorException("error", "Comprador não encontrado.");
+        }
+
+        if (!quantidadeComprada || typeof quantidadeComprada !== 'number' || quantidadeComprada <= 0 || quantidadeComprada > 100000000) {
+            erros.push("A quantidade comprada deve ser um número maior que zero e menor que 100.000.000.");
         }
 
         const valorTotalCompra = quantidadeComprada * carga.precoUnitario;
 
-        if (comprador.valorDisponivelInvestimento < valorTotalCompra) {
-            throw new Error("Saldo insuficiente para realizar a compra.");
+        if ((comprador.valorInvestimentoTotal - comprador.valorTotalInvestido) < valorTotalCompra) {
+           erros.push("Saldo insuficiente para realizar a compra.");
         }
 
         if (quantidadeComprada > carga.quantidadeSacas) {
-            throw new Error("Quantidade de sacas insuficiente na carga.");
+            erros.push("Quantidade de sacas insuficiente na carga.");
+        }
+
+        if (erros.length > 0) {
+            throw new ErrorException("info", erros.join(" "));
         }
 
         carga.quantidadeSacas -= quantidadeComprada;
         
-        comprador.valorDisponivelInvestimento -= valorTotalCompra;
         comprador.valorTotalInvestido += valorTotalCompra;
 
         const response = await fetch(this.baseUrl, {
@@ -47,9 +56,9 @@ export default class ColecaoCompra extends CompraRepository {
             },
             body: JSON.stringify(compra),
         });
-
+        console.log(!response.ok)
         if (!response.ok) {
-            throw new Error("Erro ao registrar a compra.");
+            throw new ErrorException("error", "Erro ao registrar a compra.");
         }
 
         await colecaoCarga.salvar(carga);
@@ -58,17 +67,17 @@ export default class ColecaoCompra extends CompraRepository {
         return await response.json();
     }   
 
-    async excluir(compra) {
-        if (!compra?.id) {
-            throw new Error("Compra inválida, ID é necessário para exclusão.");
+    async excluir(compraId) {
+        if (!compraId) {
+            throw new ErrorException("error", "Compra inválida, ID é necessário para exclusão.");
         }
 
-        const response = await fetch(`${this.baseUrl}/${compra.id}`, {
+        const response = await fetch(`${this.baseUrl}/${compraId}`, {
             method: 'DELETE',
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao excluir a compra.");
+            throw new ErrorException("error", "Erro ao excluir a compra.");
         }
     }
 
@@ -78,7 +87,7 @@ export default class ColecaoCompra extends CompraRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter a lista de compras.");
+            throw new ErrorException("error", "Erro ao obter a lista de compras.");
         }
 
         return await response.json();
@@ -90,7 +99,7 @@ export default class ColecaoCompra extends CompraRepository {
         });
 
         if (!response.ok) {
-            throw new Error("Erro ao obter o produtor.");
+            throw new ErrorException("error", "Erro ao obter o produtor.");
         }
 
         return await response.json();
@@ -108,7 +117,7 @@ export default class ColecaoCompra extends CompraRepository {
             });
 
             if (!response.ok) {
-                throw new Error("Erro ao atualizar a compra.");
+                throw new ErrorException("error", "Erro ao atualizar a compra.");
             }
 
             return await response.json();

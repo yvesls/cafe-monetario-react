@@ -1,17 +1,23 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
-
+import { useModal } from '../../core/service/ModalService.js';
 import compraService from '../../core/service/compraService';
 
 export default function CompraList(){
     const router = useRouter();
     const [compras, setCompras] = useState([]);
+    const { showModal } = useModal();
 
     useEffect(() => {
         const fetchProducers = async () => {
             const service = new compraService()
-            const result = await service.ProdutoreSaca();
-            setCompras(result);
+            try{
+              const result = await service.ProdutoreSaca();
+              setCompras(result);
+            }
+            catch(error) {
+              showModal(error.tipo === "info" ? "Atenção!" : "Erro Inesperado!", `${error.message}`, error.tipo);
+            }
         };
           fetchProducers();
       }, []);

@@ -16,7 +16,7 @@ export default class TransferenciaService {
       await this.atualizarCompra(transferencia,compraId)
       /* console.log("Produtor salvo com sucesso!"); */ //Jogar no modal
     } catch (error) {
-      console.error("Erro ao salvar produtor:", error); //Levantar a exeção
+      console.error("Erro ao salvar produtor:", error);
     }
 
   }
@@ -26,7 +26,6 @@ export default class TransferenciaService {
     const carg = await carga.obterPorProdutorId(transferencia.ProdutoDestinoId);
     carg[0].quantidadeSacas += transferencia.quantidadeTransferida
 
-    
     try{
       carga.salvar(carg[0])
     }catch(error){
@@ -38,7 +37,7 @@ export default class TransferenciaService {
   async atualizarComprador(transferencia){
     const comprador = new ColecaoComprador();
     const comp =  await comprador.obterPorId(transferencia.compradorOrigemId);
-    comp.valorGasto -= transferencia.ValorTransferido
+    comp.valorTotalInvestido -= transferencia.ValorTransferido
 
     
     try{
@@ -54,10 +53,11 @@ export default class TransferenciaService {
     const comp = await compra.obterPorId(compraId);
 
     const diferenca = comp.quantidadeComprada - transferencia.quantidadeTransferida
+    comp.valorTotal -= (comp.valorTotal / comp.quantidadeComprada) * transferencia.quantidadeTransferida
 
     if(diferenca <= 0 ){
        try{
-        compra.excluir(comp)
+        compra.excluir(compraId)
        }catch(error){
 
        }
@@ -112,7 +112,7 @@ export default class TransferenciaService {
       });
     });
     
-    return await resultado
+    return resultado
   }
 
 }
