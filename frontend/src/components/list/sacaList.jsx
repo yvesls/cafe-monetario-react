@@ -51,7 +51,7 @@ export default function SacaList() {
           <td>
             <i
               className="fa fa-money"
-              onClick={() => disponivel && mostra(saca.nomeProdutor)}
+              onClick={() => disponivel &&mostra(saca.codigo)}
               style={{
                 cursor: disponivel ? 'pointer' : 'not-allowed',
                 color: disponivel ? 'black' : 'gray',
@@ -64,8 +64,9 @@ export default function SacaList() {
     });
   }
 
-  function mostra(nomeFazenda) {
-    router.push(`/compra?nomeFazenda=${nomeFazenda}`);
+  
+  function mostra(codigoProdutor) {
+    router.push(`/compra?codigoProdutor=${codigoProdutor}`);
   }
 
   function formatarParaDinheiro(valor) {

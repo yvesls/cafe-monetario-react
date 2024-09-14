@@ -149,3 +149,75 @@ footer.footer {
   background: linear-gradient(135deg, #e0c8bc 0%, #e0c8bc 100%);
   color: #7c5a49;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrapper {
+  width: 80%;
+  max-width: 600px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.modal-error .modal-header {
+  color: red;
+}
+
+.modal-success .modal-header {
+  color: green;
+}
+
+.modal-info .modal-header {
+  color: blue;
+}
+
+.modal-header .icon {
+  margin-right: 10px;
+}
+
+.modal-header a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.5rem;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.modal-header a:hover {
+  color: darkgray;
+}
+
+.modal-body {
+  padding-top: 10px;
+  text-align: center;
+}

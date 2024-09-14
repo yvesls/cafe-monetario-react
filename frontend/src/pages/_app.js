@@ -12,6 +12,7 @@ export default function MyApp({ Component, pageProps }) {
       <Logo />
       <Nav />
       <Component {...pageProps} />
+      <div id="modal-root"></div>
     </div>
   );
 }

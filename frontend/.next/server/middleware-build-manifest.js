@@ -19,10 +19,15 @@ self.__BUILD_MANIFEST = {
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/cadastro": [
+    "/cadastro-comprador": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/cadastro.js"
+      "static/chunks/pages/cadastro-comprador.js"
+    ],
+    "/cadastro-produtor": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/cadastro-produtor.js"
     ],
     "/compra": [
       "static/chunks/webpack.js",

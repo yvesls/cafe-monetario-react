@@ -18,6 +18,8 @@ export default function CompradorForm() {
             nome,
             cnpj: cnpjSemMascara,
             valorInvestimentoTotal: Number(valorInvestimentoTotal),
+            valorTotalInvestido: 0,
+            valorDisponivelInvestimento: Number(valorInvestimentoTotal),
         };
 
         try {

@@ -2,8 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/listComprador": "pages/listComprador.js",
-  "/cadastro": "pages/cadastro.js",
-  "/listSacas": "pages/listSacas.js",
-  "/compra": "pages/compra.js"
+  "/": "pages/index.js",
+  "/listaSacas": "pages/listaSacas.js",
+  "/cadastro-comprador": "pages/cadastro-comprador.js",
+  "/compra": "pages/compra.js",
+  "/cadastro-produtor": "pages/cadastro-produtor.js"
 }

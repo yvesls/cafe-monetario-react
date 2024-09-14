@@ -77,6 +77,27 @@ export default class ColecaoProdutor extends ProdutorRepository {
         return await response.json();
     }
 
+    async obterProdutorESacaPorId(idProdutor) {
+        const produtor = await this.obterPorId(idProdutor);
+        
+        if (!produtor) {
+            throw new Error("Produtor não encontrado.");
+        }
+
+        const colecaoCargaCafe = new ColecaoCargaCafe();
+
+        const cargasDoProdutor = await colecaoCargaCafe.obterPorProdutorId(idProdutor);
+
+        return {
+            produtor: {
+                id: produtor.id,
+                nomeFazenda: produtor.nomeFazenda,
+                saca: cargasDoProdutor[0]
+            },
+           
+        };
+    }
+
 
     async findCargasComProdutores() {
         const colecaoCargaCafe = new ColecaoCargaCafe();
