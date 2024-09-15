@@ -12,7 +12,7 @@
   "cargasCafe": [
     {
       "produtorId": 1,
-      "quantidadeSacas": 1889,
+      "quantidadeSacas": 1890,
       "precoUnitario": 140,
       "id": 1
     },
@@ -28,7 +28,7 @@
       "nome": "Três Corações",
       "cnpj": "13290009112111",
       "valorInvestimentoTotal": 190000,
-      "valorTotalInvestido": 1540,
+      "valorTotalInvestido": 1400,
       "id": 1
     },
     {
@@ -50,8 +50,8 @@
     {
       "compradorId": 1,
       "cargaId": 1,
-      "quantidadeComprada": 11,
-      "valorTotal": 1540,
+      "quantidadeComprada": 10,
+      "valorTotal": 1400,
       "id": 1
     }
   ],
@@ -62,6 +62,13 @@
       "quantidadeTransferida": 23,
       "ValorTransferido": 3220,
       "id": 1
+    },
+    {
+      "compradorOrigemId": 1,
+      "ProdutoDestinoId": 1,
+      "quantidadeTransferida": 1,
+      "ValorTransferido": 140,
+      "id": 2
     }
   ]
 }
