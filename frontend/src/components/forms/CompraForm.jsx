@@ -1,8 +1,8 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ColecaoCompra from "../../core/colecao/ColecaoCompra";
 import ColecaoComprador from "../../core/colecao/ColecaoComprador";
 import ColecaoProdutor from "../../core/colecao/ColecaoProdutor";
-import { useRouter } from 'next/router';
 import { useModal } from '../../core/service/ModalService.js';
 
 export default function CompraForm({ codigoProdutor }) {
@@ -11,6 +11,8 @@ export default function CompraForm({ codigoProdutor }) {
   const [compradorSelecionado, setCompradorSelecionado] = useState(null);
   const [produtor, setProdutor] = useState(null);
   const [qtdSaca, setQtdSaca] = useState("");
+  const [valorDisponivelCompra, setValorDisponivelCompra] = useState(0)
+  const [valorCompraAtual, setValorCompraAtual] = useState(0)
   const { showModal } = useModal();
   const router = useRouter();
   
@@ -40,10 +42,16 @@ export default function CompraForm({ codigoProdutor }) {
   }, [codigoProdutor]);
 
   useEffect(() => {
-    if (selectedCompradorId) {
+    console.log(selectedCompradorId)
+    if (selectedCompradorId && selectedCompradorId != 0) {
       const comprador = compradores.find(c => c.id === selectedCompradorId);
       setCompradorSelecionado(comprador || null);
+      setValorDisponivelCompra(Number(comprador.valorInvestimentoTotal - comprador.valorTotalInvestido))
+      setValorCompraAtual(qtdSaca * produtor?.saca?.precoUnitario)
+    }else{
+      setCompradorSelecionado(null)
     }
+
   }, [selectedCompradorId, compradores]);
 
   const handleSubmit = async (e) => {
@@ -72,13 +80,10 @@ export default function CompraForm({ codigoProdutor }) {
     }
   };
 
-  const valorInvestimentoTotal = compradorSelecionado?.valorInvestimentoTotal || 0;
-  const valorTotalInvestido = compradorSelecionado?.valorTotalInvestido + qtdSaca && produtor?.saca ? (qtdSaca * produtor?.saca?.precoUnitario) : 0;
-  const valorDisponivelInvestimento = valorInvestimentoTotal - valorTotalInvestido;
-
-  const valorDecrementado = qtdSaca && produtor?.saca?.precoUnitario 
-    ? valorDisponivelInvestimento - (qtdSaca * produtor.saca.precoUnitario) 
-    : valorDisponivelInvestimento;
+  const chageValorCompraAtual = (e) =>{
+    console.log(e)
+    setValorCompraAtual(e * produtor.saca.precoUnitario)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -96,7 +101,7 @@ export default function CompraForm({ codigoProdutor }) {
         <select
           id="comprador"
           value={selectedCompradorId || ""}
-          onChange={(e) => setSelectedCompradorId(Number(e.target.value))}
+          onChange={(e) => {setSelectedCompradorId(Number(e.target.value));}}
           required
         >
           <option value="">Selecione um comprador</option>
@@ -114,12 +119,12 @@ export default function CompraForm({ codigoProdutor }) {
           id="qtdSacas"
           value={qtdSaca}
           placeholder="Informe a quantidade de saca"
-          onChange={(e) => setQtdSaca(e.target.value)}
+          onChange={(e) => {setQtdSaca(e.target.value); chageValorCompraAtual(e.target.value) }}
           required
         />
       </div>
       <div>
-        <label htmlFor="valorSaca">Valor por saca:</label>
+        <label htmlFor="valorSaca">Valor por saca (R$):</label>
         <input
           type="number"
           id="valorSaca"
@@ -134,22 +139,16 @@ export default function CompraForm({ codigoProdutor }) {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>CNPJ</th>
-              <th>Valor Investimento Total</th>
-              <th>Valor Total Investido</th>
-              <th>Valor Disponível Investimento</th>
+              <th>Nome do comprador</th>
+              <th>Valor disponível investimento</th>
+              <th>Valor da compra atual</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{compradorSelecionado.id}</td>
               <td>{compradorSelecionado.nome}</td>
-              <td>{compradorSelecionado.cnpj}</td>
-              <td>{valorInvestimentoTotal.toFixed(2)}</td>
-              <td>{valorTotalInvestido.toFixed(2)}</td>
-              <td>{valorDecrementado.toFixed(2)}</td>
+              <td> R$ {valorDisponivelCompra}</td>
+              <td> R$ {valorCompraAtual}</td>
             </tr>
           </tbody>
         </table>

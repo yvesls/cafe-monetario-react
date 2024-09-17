@@ -45,13 +45,13 @@ export default function CompraList(){
             <td>{compra.compradorNome}</td>
             <td>{formatarParaDinheiro(compra.valorTotal)}</td>
             <td>
-              <i className="fa fa-retweet" onClick={() => mostra(compra.produtorId, compra.compradorId, compra.id)}></i>
+              <i className="fa fa-retweet" onClick={() => goTrasferencia(compra.produtorId, compra.compradorId, compra.id)}></i>
             </td>
           </tr>
         ));
       }
 
-      function mostra(produtorId, compradorId, compraId) {
+      function goTrasferencia(produtorId, compradorId, compraId) {
         router.push(`/transferencia?produtorId=${produtorId}&compradorId=${compradorId}&compraId=${compraId}`);
     }
     

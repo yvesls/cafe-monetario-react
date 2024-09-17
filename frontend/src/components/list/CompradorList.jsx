@@ -36,26 +36,11 @@ export default function CompradorList() {
         <td>R$ {comprador.valorInvestimentoTotal?.toFixed(2)}</td>
         <td>R$ {comprador.valorTotalInvestido?.toFixed(2)}</td>
         <td>R$ {valorDisponivelInvestimento(comprador).toFixed(2)}</td>
-        <td>
-          <i className="fa fa-trash" style={{ cursor: 'pointer', color: 'red' }} 
-             onClick={() => excluirComprador(comprador.id)}></i>
-        </td>
       </tr>
     ));
   };
 
   
-  const excluirComprador = async (compradorId) => {
-    try {
-      const colecaoComprador = new ColecaoComprador();
-      await colecaoComprador.excluir(compradorId)
-      setCompradores(compradores.filter(comprador => comprador.id !== compradorId));
-      alert('Comprador excluído com sucesso!');
-    } catch (error) {
-      console.error('Erro ao excluir o comprador:', error);
-      alert('Erro ao excluir o comprador. Tente novamente.');
-    }
-  };
 
   function renderizarCabecalho() {
     return (
@@ -65,7 +50,6 @@ export default function CompradorList() {
         <th>Valor Investimento Total</th>
         <th>Valor Total Investido</th>
         <th>Valor disponível investimento</th>
-        <th>Ações</th>
       </tr>
     );
   }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
 import ColecaoCargaCafe from '../../core/colecao/ColecaoCargaCafe';
+import ColecaoProdutor from '../../core/colecao/ColecaoProdutor';
 import { useModal } from '../../core/service/ModalService.js';
 
 export default function ProdutorForm() {
@@ -62,7 +62,7 @@ export default function ProdutorForm() {
                 />
             </div>
             <div>
-                <label>Preço por saca:</label>
+                <label>Preço por saca (R$):</label>
                 <input
                     type="number"
                     value={preco}

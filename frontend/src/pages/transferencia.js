@@ -1,5 +1,5 @@
 import Main from '../components/Main';
-import TransferenciaForm from '../components/forms/transferencia';
+import TransferenciaForm from '../components/forms/transferenciaForm.jsx';
 
 export async function getServerSideProps(context) {
     const { produtorId, compradorId, compraId} = context.query;

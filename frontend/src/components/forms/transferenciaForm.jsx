@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ColecaoCompra from "../../core/colecao/ColecaoCompra.js";
-import ColecaoComprador from "../../core/colecao/ColecaoComprador";
-import ColecaoProdutor from "../../core/colecao/ColecaoProdutor";
-import TransferenciaService from "../../core/service/transferenciaService.js";
+import ColecaoComprador from "../../core/colecao/ColecaoComprador.js";
+import ColecaoProdutor from "../../core/colecao/ColecaoProdutor.js";
 import { useModal } from '../../core/service/ModalService.js';
+import TransferenciaService from "../../core/service/transferenciaService.js";
 
 export default function TransferenciaForm({
   produtorId,
@@ -16,6 +16,8 @@ export default function TransferenciaForm({
   const [nomeFazenda, setNomeFazenda] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [nomeComprador, setNomeComprador] = useState("");
+  const [valorRecebido, setValorRecebido] = useState("");
+
 
   const [compra, setCompra] = useState(null);
 
@@ -86,6 +88,10 @@ export default function TransferenciaForm({
   function getPrecoQuantidade() {
     return (compra.valorTotal / compra.quantidadeComprada) * quantidade;
   }
+  
+  function handleValorRecebido(e){
+    setValorRecebido((compra.valorTotal / compra.quantidadeComprada) * e)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -94,7 +100,6 @@ export default function TransferenciaForm({
         <input
           type="text"
           value={nomeFazenda || ""}
-          onChange={(e) => setNomeFazenda(e.target.value)}
           disabled
         />
       </div>
@@ -103,7 +108,7 @@ export default function TransferenciaForm({
         <input
           type="number"
           value={quantidade || ""}
-          onChange={(e) => setQuantidade(e.target.value)}
+          onChange={(e) =>{ setQuantidade(e.target.value); handleValorRecebido(e.target.value) }}
           placeholder="Quantidade de sacas"
           required
         />
@@ -113,7 +118,14 @@ export default function TransferenciaForm({
         <input
           type="text"
           value={nomeComprador || ""}
-          onChange={(e) => setNomeComprador(e.target.value)}
+          disabled
+        />
+      </div>
+      <div>
+        <label>Valor recebido (R$):</label>
+        <input
+          type="number"
+          value={valorRecebido || ""}
           disabled
         />
       </div>

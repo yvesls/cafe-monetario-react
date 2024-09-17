@@ -1,6 +1,5 @@
-import CargaCafeRepository from "../repository/CargaCafeRepository";
 import ErrorException from "../Exception/ErrorException.jsx";
-import ColecaoProdutor from "./ColecaoProdutor.js";
+import CargaCafeRepository from "../repository/CargaCafeRepository";
 
 export default class ColecaoCargaCafe extends CargaCafeRepository {
     constructor() {
@@ -116,13 +115,6 @@ export default class ColecaoCargaCafe extends CargaCafeRepository {
 
         if (precoUnitario > 10000) {
             erros.push("O preço unitário é muito alto. O máximo permitido é 10.000.");
-        }
-
-        if (erros.length > 0) {
-            const colecaoProdutor = new ColecaoProdutor();
-            await colecaoProdutor.excluir(produtorId);
-
-            throw new ErrorException("info", erros.join(" "));
         }
     }
 }

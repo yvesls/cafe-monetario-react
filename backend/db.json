@@ -1,74 +1,12 @@
 {
   "produtores": [
-    {
-      "nomeFazenda": "Fazenda Nova Esperança",
-      "id": 1
-    },
-    {
-      "nomeFazenda": "Fazenda Tio João",
-      "id": 2
-    }
   ],
   "cargasCafe": [
-    {
-      "produtorId": 1,
-      "quantidadeSacas": 1890,
-      "precoUnitario": 140,
-      "id": 1
-    },
-    {
-      "produtorId": 2,
-      "quantidadeSacas": 108,
-      "precoUnitario": 120,
-      "id": 2
-    }
   ],
   "comprador": [
-    {
-      "nome": "Três Corações",
-      "cnpj": "13290009112111",
-      "valorInvestimentoTotal": 190000,
-      "valorTotalInvestido": 1400,
-      "id": 1
-    },
-    {
-      "nome": "Anchieta Café",
-      "cnpj": "13988899918881",
-      "valorInvestimentoTotal": 15000,
-      "valorTotalInvestido": 0,
-      "id": 2
-    },
-    {
-      "nome": "Café Cafuso",
-      "cnpj": "12312312312311",
-      "valorInvestimentoTotal": 110,
-      "valorTotalInvestido": 0,
-      "id": 3
-    }
   ],
   "compra": [
-    {
-      "compradorId": 1,
-      "cargaId": 1,
-      "quantidadeComprada": 10,
-      "valorTotal": 1400,
-      "id": 1
-    }
   ],
   "transferencia": [
-    {
-      "compradorOrigemId": 1,
-      "ProdutoDestinoId": 1,
-      "quantidadeTransferida": 23,
-      "ValorTransferido": 3220,
-      "id": 1
-    },
-    {
-      "compradorOrigemId": 1,
-      "ProdutoDestinoId": 1,
-      "quantidadeTransferida": 1,
-      "ValorTransferido": 140,
-      "id": 2
-    }
   ]
 }

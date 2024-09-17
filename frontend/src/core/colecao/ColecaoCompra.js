@@ -1,7 +1,7 @@
+import ErrorException from "../Exception/ErrorException.jsx";
 import CompraRepository from "../repository/CompraRepositoy";
 import ColecaoCargaCafe from "./ColecaoCargaCafe";
 import ColecaoComprador from "./ColecaoComprador";
-import ErrorException from "../Exception/ErrorException.jsx";
 
 export default class ColecaoCompra extends CompraRepository {
     constructor() {
@@ -56,7 +56,6 @@ export default class ColecaoCompra extends CompraRepository {
             },
             body: JSON.stringify(compra),
         });
-        console.log(!response.ok)
         if (!response.ok) {
             throw new ErrorException("error", "Erro ao registrar a compra.");
         }

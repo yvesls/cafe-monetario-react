@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { formatarCNPJ, removerMascaraCNPJ } from '../../utils/maskUtils';
 import ColecaoComprador from '../../core/colecao/ColecaoComprador';
 import { useModal } from '../../core/service/ModalService.js';
+import { formatarCNPJ, removerMascaraCNPJ } from '../../utils/maskUtils';
 
 export default function CompradorForm() {
     const [nome, setNome] = useState('');
@@ -60,7 +60,7 @@ export default function CompradorForm() {
                 />
             </div>
             <div>
-                <label htmlFor="valorInvestimentoTotal">Valor Total de Investimento:</label>
+                <label htmlFor="valorInvestimentoTotal">Valor Total de Investimento (R$):</label>
                 <input
                     type="number"
                     value={valorInvestimentoTotal}
